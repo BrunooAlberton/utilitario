@@ -19,6 +19,7 @@ public class Instituicao {
        aluno.setNome(nome);
        aluno.setTurma(turma);
        turma.setCodigo(codigo);
+       turma.setDescricao(descricao);
        
         
         
