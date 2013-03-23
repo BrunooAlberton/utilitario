@@ -7,11 +7,12 @@ public class Aluno {
     float notaG1;
     float notaG2;
     Turma turma;
-    float media;
     
-    public Aluno(String nome, int ra){
+    public Aluno(String nome, int ra, float g1, float g2){
         this.nome=nome;
         this.ra=ra;
+        this.notaG1 = g1;
+        this.notaG2 = g2;
     }
 
     public int getRa() {
@@ -57,13 +58,8 @@ public class Aluno {
 
   
     
-    public void setMedia(float media){
-        this.media=media;
-    }
     public float calculaMediaAluno(){
-       media=( notaG1*1+notaG2*2)/3;
-       return media;
-        
+       return ( notaG1*1+notaG2*2)/3;
     }
     
 }

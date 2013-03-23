@@ -6,6 +6,7 @@ public class Turma {
 
     public double codigo;
     public String descricao;
+    ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 
     public Turma(double codigo, String descricao) {
         this.codigo = codigo;
@@ -23,21 +24,14 @@ public class Turma {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
 
     public String getDescricao() {
         return descricao;
     }
-    ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 
     public int quantidadeDeAlunos() {
 
-        for (int x = 0; x < alunos.size(); x++) {
-
-            Aluno aluno;
-            aluno = alunos.get(x);
-
-        }
+        return alunos.size();
     }
 
     public int quantidadeDeAlunosAprovados() {
@@ -46,58 +40,65 @@ public class Turma {
 
             Aluno aluno;
             aluno = alunos.get(x);
-            if (aluno.media >= 7) {
+            if (aluno.calculaMediaAluno() >= 7) {
                 quantidade++;
 
 
             }
-            
+
         }
         return quantidade;
     }
 
     public int alunosReprovados() {
-        int quantidade= 0;
+        int quantidade = 0;
         for (int x = 0; x < alunos.size(); x++) {
 
             Aluno aluno;
             aluno = alunos.get(x);
 
-            if (aluno.media < 7) {
+            if (aluno.calculaMediaAluno() < 7) {
                 quantidade++;
             }
         }
         return quantidade;
 
     }
-    public float porcentagemDeAlunosAprovados(){
-        int al=alunos.size();
-       int quantidade=0;
-        Aluno aluno;
-        aluno=aluno;
-        if(aluno.media<7){
-            
-            quantidade++;
-          
-                  
-            
-        }
-          return quantidade;
+
+    public float porcentagemDeAlunosAprovados() {
+        float quantidade;
+        quantidade = (quantidadeDeAlunosAprovados() / alunos.size() * 100);
+        return quantidade;
+
+
+
+
+
     }
-    
-    
-    public float porcentagemDeAlunosReprovados(){
-        
-        int bl=alunos.size();
-        int quantidad=0;
-                Aluno alunoA;
-                alunoA=alunoA;
-                if(alunoA.media<7){
-                    quantidad++;
-                }
-                return quantidad;
+
+    public float porcentagemDeAlunosReprovados() {
+
+        float quantidade;
+        quantidade = (alunosReprovados() / alunos.size() * 100);
+        return quantidade;
+    }
+
+    public float mediaGeral() {
+        //
+        float somaDasMedias = 0;
+        //inicio do x menor alunos.size acresenta no x
+        //alunos. get x a posição
+        // somaDasMedias/ quantidade de alunos
+        for (int x = 0; x < alunos.size(); x++) {
+            Aluno aluno = alunos.get(x);
+            somaDasMedias += aluno.calculaMediaAluno();
+        }
+        return somaDasMedias / alunos.size();
+    }
+
+    public void matricula(Aluno aluno) {
+        alunos.add(aluno);
+        aluno.setTurma(this);
+
     }
 }
- 
-     
-     
